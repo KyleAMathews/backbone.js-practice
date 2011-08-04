@@ -26,4 +26,4 @@ $("button").click ->
     answers[question] = answer
 
   # Post answers
-  $.post "post.php", answers
+  $.post "post.php", {'answers': answers}

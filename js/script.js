@@ -29,6 +29,8 @@
       answer = $(this).find('td.answer').html();
       return answers[question] = answer;
     });
-    return $.post("post.php", answers);
+    return $.post("post.php", {
+      'answers': answers
+    });
   });
 }).call(this);
