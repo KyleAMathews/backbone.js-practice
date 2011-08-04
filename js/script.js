@@ -1,7 +1,7 @@
 (function() {
   var $, is_answered, move_answer;
   $ = jQuery;
-  $('#quiz ul li').click(function() {
+  $('#quiz').delegate('li', 'click', function() {
     $(this).toggleClass('selected');
     return is_answered();
   });
@@ -17,7 +17,7 @@
     console.log("We're ready Jack!");
     question = $("#quiz ul.questions li.selected").html();
     answer = $("#quiz ul.questions li.selected").html();
-    $("#quiz ul li.selected").fadeOut('slow');
-    return $('#answers > tbody:last').append('<tr><td>' + question + '</td><td>' + answer + '</td></tr>').children(":last").hide().slideDown();
+    $("#quiz ul li.selected").fadeOut('slow').remove();
+    return $('#answers > tbody:last').append('<tr><td>' + question + '</td><td>' + answer + '</td></tr>');
   };
 }).call(this);
