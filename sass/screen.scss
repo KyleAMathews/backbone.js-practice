@@ -1,0 +1,45 @@
+@import "compass/reset";
+@import "compass/utilities";
+@import "compass/css3";
+@import "typography";
+
+.answers, .questions {
+  li {
+    list-style: none;
+    padding: 20px;
+    text-align: center;
+    @include border-radius(15px);
+    &:hover {
+      background: #FFC200;
+      cursor: pointer;
+    }
+  }
+}
+
+.selected {
+  background: #FFC200;
+  padding: 17px;
+  border: 3px solid #FF5B00;
+  &:hover {
+    background: #FFC200;
+  }
+}
+
+#answered {
+  background: lightBlue;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  margin-bottom: 2em;
+  #answers {
+    $table-color: #7a98c6;
+    @include table-scaffolding;
+    @include inner-table-borders(1px, darken($table-color, 40%));
+    @include outer-table-borders(2px);
+    td {
+      text-align: center;
+    }
+  }
+}
+#quiz {
+  background: lightYellow;
+}

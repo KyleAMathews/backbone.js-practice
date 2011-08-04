@@ -1,0 +1,43 @@
+/* 960 Grid System ~ Core CSS.
+ * Learn more ~ http://960.gs/
+ * *
+ * Licensed under GPL and MIT. */
+/* line 10, ../sass/grid.scss */
+#container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+
+/* line 14, ../sass/grid.scss */
+.questions {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 260px;
+  padding-left: 160px;
+  margin-left: 0;
+}
+
+/* line 19, ../sass/grid.scss */
+.answers {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 260px;
+  padding-right: 160px;
+  margin-right: 0;
+}
+
+/* line 24, ../sass/grid.scss */
+#answered, #quiz h2 {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 540px;
+  padding-right: 160px;
+  padding-left: 160px;
+}

@@ -1,0 +1,3 @@
+.sass-cache/*
+imports/src/.sass-cache/*
+*.swp

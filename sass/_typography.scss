@@ -1,0 +1,56 @@
+/* 960 Grid System ~ Text CSS.
+ * Learn more ~ http://960.gs/
+ * *
+ * Licensed under GPL and MIT. */
+
+@import "blueprint/typography";
+@import "compass/typography";
+
+@include blueprint-typography;
+
+/* Setup vertical rhythm */
+@include establish-baseline;
+
+body { 
+  font-family: $blueprint-font-family;
+}
+code { font-family: "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace; }
+.signature { font-family:  "Bradley Hand ITC", "Apple Chancery", "URW Chancery L", cursive; }
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+/* Slim down header sizes a bit */
+$h1-size: $base-font-size * 2.333;
+$h2-size: $base-font-size * 1.5;
+h1 {
+  @include adjust-font-size-to($h1-size, 1.5);
+  @include leader(1.5, $h1-size);
+  @include trailer(1, $h1-size);
+}
+h2 {
+  @include adjust-font-size-to($h2-size, 1.5);
+  @include trailer(1, $h2-size);
+}
+h3, h4, h5, h6 {
+  @include adjust-font-size-to(14px, 1.5);
+  @include trailer(0, 14px);
+}
+
+#breadcrumb {
+  @include adjust-font-size-to(12px);
+}
+
+article {
+  @include trailing-border();
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}

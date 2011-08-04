@@ -1,0 +1,28 @@
+/* 960 Grid System ~ Core CSS.
+ * Learn more ~ http://960.gs/
+ * *
+ * Licensed under GPL and MIT. */
+
+@import "960/grid";
+
+$ninesixty-columns: 24;
+
+#container {
+  @include grid-container;
+}
+
+.questions {
+  @include grid(7);
+  @include grid-prefix(4);
+  @include alpha();
+}
+.answers {
+  @include grid(7);
+  @include grid-suffix(4);
+  @include omega();
+}
+#answered, #quiz h2 {
+  @include grid(14);
+  @include grid-suffix(4);
+  @include grid-prefix(4);
+}
