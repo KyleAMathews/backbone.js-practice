@@ -17,6 +17,7 @@
     console.log("We're ready Jack!");
     question = $("#quiz ul.questions li.selected").html();
     answer = $("#quiz ul.questions li.selected").html();
-    return $('#answers > tbody:last').append('<tr><td>' + question + '</td><td>' + answer + '</td></tr>');
+    $("#quiz ul li.selected").fadeOut('slow');
+    return $('#answers > tbody:last').append('<tr><td>' + question + '</td><td>' + answer + '</td></tr>').children(":last").hide().slideDown();
   };
 }).call(this);
