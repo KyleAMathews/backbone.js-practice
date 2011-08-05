@@ -19,11 +19,17 @@ move_answer = () ->
   $('#answers > tbody:last').append('<tr><td class="question">' + question + '</td><td class="answer">' + answer + '</td></tr>')
 
 $("button").click ->
-  answers = []
+  answers = {}
   $("#answers tr").each ->
     question = $(@).find('td.question').html()
     answer = $(@).find('td.answer').html()
     answers[question] = answer
 
   # Post answers
-  $.post "post.php", {'answers': answers}
+  $.post(
+    "post.php"
+    answers: answers
+    id: 'something'
+    (data) -> alert 'Answers saved!'
+    'json'
+  )

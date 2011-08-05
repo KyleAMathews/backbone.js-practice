@@ -1,5 +1,5 @@
 <?php
 
-$data = var_dump($_POST['answers']);
+$data = json_encode($_POST['answers']);
 file_put_contents("/tmp/temp", $data);
-print_r($_POST);
+print $data;

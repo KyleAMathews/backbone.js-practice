@@ -22,7 +22,7 @@
   };
   $("button").click(function() {
     var answers;
-    answers = [];
+    answers = {};
     $("#answers tr").each(function() {
       var answer, question;
       question = $(this).find('td.question').html();
@@ -30,7 +30,10 @@
       return answers[question] = answer;
     });
     return $.post("post.php", {
-      'answers': answers
-    });
+      answers: answers,
+      id: 'something'
+    }, function(data) {
+      return alert('Answers saved!');
+    }, 'json');
   });
 }).call(this);
