@@ -130,8 +130,7 @@
         return this;
       };
       ItemView.prototype.toggleSelect = function() {
-        this.model.toggleSelected();
-        return this.render();
+        return this.model.toggleSelected();
       };
       return ItemView;
     })();
@@ -170,12 +169,16 @@
     UnansweredView = (function() {
       __extends(UnansweredView, Backbone.View);
       function UnansweredView() {
+        this.save = __bind(this.save, this);
         this.matchIsMade = __bind(this.matchIsMade, this);
         this.isMatch = __bind(this.isMatch, this);
         this.render = __bind(this.render, this);
         UnansweredView.__super__.constructor.apply(this, arguments);
       }
       UnansweredView.prototype.el = $("#quiz");
+      UnansweredView.prototype.events = {
+        'click button': "save"
+      };
       UnansweredView.prototype.initialize = function() {
         this.questions = this.options.questions;
         this.answers = this.options.answers;
@@ -198,6 +201,7 @@
       UnansweredView.prototype.render = function() {
         $(this.el).append(this.questionsView.render().el);
         $(this.el).append(this.answersView.render().el);
+        $(this.el).append("<button style='float:right;'>I'm finished!</button>");
         return this;
       };
       UnansweredView.prototype.isMatch = function() {
@@ -216,6 +220,24 @@
           answer: answer
         });
         return this.matches.add(match);
+      };
+      UnansweredView.prototype.save = function() {
+        var matches;
+        matches = [];
+        this.matches.each(function(match) {
+          var answer, question;
+          question = match.get("question").get("content");
+          answer = match.get("answer").get("content");
+          return matches.push({
+            'question': question,
+            'answer': answer
+          });
+        });
+        return $.post("post.php", {
+          matches: matches
+        }, function(data) {
+          return alert('Answers saved!');
+        }, 'json');
       };
       return UnansweredView;
     })();

@@ -72,7 +72,6 @@ $ ->
 
     toggleSelect: ->
       @model.toggleSelected()
-      @render()
 
   class ListView extends Backbone.View
     tagName: "ul"
@@ -96,6 +95,9 @@ $ ->
   class UnansweredView extends Backbone.View
     el: $("#quiz")
 
+    events:
+      'click button'    : "save"
+
     initialize: ->
       @questions = @options.questions
       @answers = @options.answers
@@ -117,6 +119,7 @@ $ ->
     render: =>
       $(@el).append( @questionsView.render().el )
       $(@el).append( @answersView.render().el )
+      $(@el).append( "<button style='float:right;'>I'm finished!</button>" )
       return @
 
     isMatch: =>
@@ -132,6 +135,21 @@ $ ->
       answer.toggleMatched()
       match = new Match( { question: question, answer: answer } )
       @matches.add( match )
+
+    save: =>
+      matches = []
+      @matches.each (match) ->
+        question = match.get("question").get("content")
+        answer = match.get("answer").get("content")
+        matches.push( { 'question': question, 'answer': answer } )
+
+      # Post answers
+      $.post(
+        "post.php"
+        matches: matches
+        (data) -> alert 'Answers saved!'
+        'json' 
+      )
 
   class MatchedView extends Backbone.View
     tagName: 'tr'
